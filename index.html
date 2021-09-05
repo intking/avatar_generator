@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Avatar Generator</title>
+        <script>
+            window.onload = function () {
+                var bothead = new Image();
+                var botheadnum = Math.floor(Math.random()*3)+1;
+                var botheadname = "head" + botheadnum + ".png"; 
+
+                bothead.src = botheadname;
+                bothead.onload = function () {
+                    buildbot();
+                }
+
+                var boteyes = new Image();
+                var boteyesnum = Math.floor(Math.random()*2)+1;
+                var boteyesname = "eyes" + boteyesnum + ".png"; 
+
+                boteyes.src = boteyesname;
+                boteyes.onload = function () {
+                    buildbot();
+                }
+
+                function buildbot() {
+                    var canvas = document.getElementById('canvas');
+                    var ctx = canvas.getContext('2d');
+
+                    canvas.width = 500;
+                    canvas.height = 500;
+
+                    ctx.drawImage(bothead, ((400 - bothead.width) / 2), 50);
+                    ctx.drawImage(boteyes, ((400 - boteyes.width) / 2), 50);
+
+                }
+
+            }
+        </script>
+    </head>
+    <body>
+        <div align="center">
+            <canvas id="canvas" style="border:5px solid #000000"></canvas>
+            <br>
+            <br>
+            <button onclick="window.location.reload();">Generate</button>
+        </div>
+    </body>
+</html>
